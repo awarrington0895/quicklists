@@ -4,11 +4,12 @@ import { ChecklistService } from '../shared/data-access/checklist.service';
 import { Checklist } from '../shared/interfaces/checklist';
 import { FormModalComponent } from '../shared/ui/form-modal.component';
 import { ModalComponent } from '../shared/ui/modal.component';
+import { ChecklistListComponent } from './ui/checklist-list.component';
 
 @Component({
   standalone: true,
   selector: 'app-home',
-  imports: [ModalComponent, FormModalComponent],
+  imports: [ModalComponent, FormModalComponent, ChecklistListComponent],
   template: `
     <header>
       <h1>Quicklists</h1>
@@ -29,6 +30,11 @@ import { ModalComponent } from '../shared/ui/modal.component';
         />
       </ng-template>
     </app-modal>
+
+    <section>
+      <h2>Your checklists</h2>
+      <app-checklist-list [checklists]="checklistsService.checklists()" />
+    </section>
   `,
 })
 export default class HomeComponent {
