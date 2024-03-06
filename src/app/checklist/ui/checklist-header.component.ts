@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Checklist } from '../../shared/interfaces/checklist';
 
@@ -10,10 +10,15 @@ import { Checklist } from '../../shared/interfaces/checklist';
   template: `
     <header>
       <a routerLink="/home">Back</a>
-      <h1>{{ checklist.title }}</h1>
+      <h1>{{ checklist().title }}</h1>
+      <div>
+        <button (click)="addItem.emit()">Add item</button>
+      </div>
     </header>
   `,
 })
 export class ChecklistHeaderComponent {
-  @Input({ required: true }) checklist!: Checklist;
+  checklist = input.required<Checklist>();
+
+  @Output() addItem = new EventEmitter<void>();
 }
