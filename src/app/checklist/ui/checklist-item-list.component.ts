@@ -2,9 +2,9 @@ import { Component, EventEmitter, Output, input } from "@angular/core";
 import { ChecklistItem, RemoveChecklistItem } from "../../shared/interfaces/checklist-item";
 
 @Component({
-    standalone: true,
-    selector: 'app-checklist-item-list',
-    template: `
+  standalone: true,
+  selector: 'app-checklist-item-list',
+  template: `
     <section>
       <ul>
         @for (item of checklistItems(); track item.id){
@@ -18,6 +18,8 @@ import { ChecklistItem, RemoveChecklistItem } from "../../shared/interfaces/chec
           </div>
           <div>
             <button (click)="toggle.emit(item.id)">Toggle</button>
+            <button (click)="edit.emit(item)">Edit</button>
+            <button (click)="delete.emit(item.id)">Delete</button>
           </div>
         </li>
         } @empty {
@@ -31,7 +33,9 @@ import { ChecklistItem, RemoveChecklistItem } from "../../shared/interfaces/chec
     `
 })
 export class ChecklistItemListComponent {
-    @Output() toggle = new EventEmitter<RemoveChecklistItem>();
+  @Output() toggle = new EventEmitter<RemoveChecklistItem>();
+  @Output() delete = new EventEmitter<RemoveChecklistItem>();
+  @Output() edit = new EventEmitter<ChecklistItem>();
 
-    checklistItems = input.required<ChecklistItem[]>();
+  checklistItems = input.required<ChecklistItem[]>();
 }
