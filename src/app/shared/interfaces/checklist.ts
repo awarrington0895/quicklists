@@ -1,6 +1,6 @@
 export interface Checklist {
-    id: string;
-    title: string;
+  id: string;
+  title: string;
 }
 
 export type AddChecklist = Omit<Checklist, 'id'>;

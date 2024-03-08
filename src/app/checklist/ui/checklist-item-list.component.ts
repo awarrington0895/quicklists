@@ -13,7 +13,7 @@ import {
         padding: 0;
         margin: 0;
       }
-      
+
       li {
         font-size: 1.5em;
         display: flex;
@@ -32,26 +32,26 @@ import {
   template: `
     <section>
       <ul>
-        @for (item of checklistItems(); track item.id){
-        <li>
-          <div>
-            @if (item.checked) {
-            <span>✅</span>
-            }
+        @for (item of checklistItems(); track item.id) {
+          <li>
+            <div>
+              @if (item.checked) {
+                <span>✅</span>
+              }
 
-            {{ item.title }}
-          </div>
-          <div>
-            <button (click)="toggle.emit(item.id)">Toggle</button>
-            <button (click)="edit.emit(item)">Edit</button>
-            <button (click)="delete.emit(item.id)">Delete</button>
-          </div>
-        </li>
+              {{ item.title }}
+            </div>
+            <div>
+              <button (click)="toggle.emit(item.id)">Toggle</button>
+              <button (click)="edit.emit(item)">Edit</button>
+              <button (click)="delete.emit(item.id)">Delete</button>
+            </div>
+          </li>
         } @empty {
-        <div>
-          <h2>Add an item</h2>
-          <p>Click the add button to add your first item to this quicklist</p>
-        </div>
+          <div>
+            <h2>Add an item</h2>
+            <p>Click the add button to add your first item to this quicklist</p>
+          </div>
         }
       </ul>
     </section>

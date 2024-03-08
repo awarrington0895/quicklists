@@ -40,8 +40,8 @@ import { ChecklistListComponent } from './ui/checklist-list.component';
 
     <section>
       <h2>Your checklists</h2>
-      <app-checklist-list 
-        [checklists]="checklistsService.checklists()" 
+      <app-checklist-list
+        [checklists]="checklistsService.checklists()"
         (delete)="checklistsService.remove$.next($event)"
         (edit)="checklistBeingEdited.set($event)"
       />
@@ -66,7 +66,7 @@ export default class HomeComponent {
         this.checklistForm.reset();
       } else {
         this.checklistForm.patchValue({
-          title: checklist.title
+          title: checklist.title,
         });
       }
     });

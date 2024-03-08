@@ -1,10 +1,10 @@
 {
-    "angular-schematics.schematicsDefaultOptions": {
-        "angular-component": {
-            "skipPathSubfolder": true
-        },
-        "angular-*": {
-            "skipStyle": true
-        }
+  "angular-schematics.schematicsDefaultOptions": {
+    "angular-component": {
+      "skipPathSubfolder": true
+    },
+    "angular-*": {
+      "skipStyle": true
     }
+  }
 }

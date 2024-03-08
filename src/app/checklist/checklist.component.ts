@@ -4,7 +4,7 @@ import {
   computed,
   effect,
   inject,
-  signal
+  signal,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
@@ -21,18 +21,24 @@ import { ChecklistItemListComponent } from './ui/checklist-item-list.component';
   selector: 'app-checklist',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ChecklistItemListComponent, ChecklistHeaderComponent, RouterLink, ModalComponent, FormModalComponent],
+  imports: [
+    ChecklistItemListComponent,
+    ChecklistHeaderComponent,
+    RouterLink,
+    ModalComponent,
+    FormModalComponent,
+  ],
   template: `
     @if (checklist(); as checklist) {
-      <app-checklist-header 
-        [checklist]="checklist" 
-        (addItem)="checklistItemBeingEdited.set({})" 
+      <app-checklist-header
+        [checklist]="checklist"
+        (addItem)="checklistItemBeingEdited.set({})"
         (resetChecklist)="checklistItemService.reset$.next($event)"
       />
 
-      <app-checklist-item-list 
-        [checklistItems]="items()" 
-        (toggle)="checklistItemService.toggle$.next($event)" 
+      <app-checklist-item-list
+        [checklistItems]="items()"
+        (toggle)="checklistItemService.toggle$.next($event)"
         (delete)="checklistItemService.remove$.next($event)"
         (edit)="checklistItemBeingEdited.set($event)"
       />
@@ -58,8 +64,6 @@ import { ChecklistItemListComponent } from './ui/checklist-item-list.component';
         />
       </ng-template>
     </app-modal>
-
-    
   `,
 })
 export default class ChecklistComponent {
@@ -75,17 +79,17 @@ export default class ChecklistComponent {
   checklist = computed(() =>
     this.checklistService
       .checklists()
-      .find((checklist) => checklist.id === this.params()?.get('id'))
+      .find((checklist) => checklist.id === this.params()?.get('id')),
   );
 
   checklistItemForm = this.formBuilder.nonNullable.group({
-    title: ['']
+    title: [''],
   });
 
   items = computed(() =>
     this.checklistItemService
       .checklistItems()
-      .filter(item => item.checklistId === this.params()?.get('id'))
+      .filter((item) => item.checklistId === this.params()?.get('id')),
   );
 
   constructor() {
@@ -96,9 +100,9 @@ export default class ChecklistComponent {
         this.checklistItemForm.reset();
       } else {
         this.checklistItemForm.patchValue({
-          title: checklistItem.title
-        })
+          title: checklistItem.title,
+        });
       }
-    })
+    });
   }
 }
