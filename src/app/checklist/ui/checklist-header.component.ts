@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Output,
+  input,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Checklist, RemoveChecklist } from '../../shared/interfaces/checklist';
 
@@ -6,6 +12,13 @@ import { Checklist, RemoveChecklist } from '../../shared/interfaces/checklist';
   selector: 'app-checklist-header',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  styles: [
+    `
+      button {
+        margin-left: 1rem;
+      }
+    `,
+  ],
   imports: [RouterLink],
   template: `
     <header>
