@@ -9,18 +9,17 @@ import { RouterLink } from '@angular/router';
 import { Checklist, RemoveChecklist } from '../../shared/interfaces/checklist';
 
 @Component({
-  selector: 'app-checklist-header',
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styles: [
-    `
+    selector: 'app-checklist-header',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: [
+        `
       button {
         margin-left: 1rem;
       }
     `,
-  ],
-  imports: [RouterLink],
-  template: `
+    ],
+    imports: [RouterLink],
+    template: `
     <header>
       <a routerLink="/home">Back</a>
       <h1>{{ checklist().title }}</h1>
@@ -29,7 +28,7 @@ import { Checklist, RemoveChecklist } from '../../shared/interfaces/checklist';
         <button (click)="addItem.emit()">Add item</button>
       </div>
     </header>
-  `,
+  `
 })
 export class ChecklistHeaderComponent {
   checklist = input.required<Checklist>();

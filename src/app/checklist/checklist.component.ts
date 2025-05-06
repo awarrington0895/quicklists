@@ -18,17 +18,15 @@ import { ChecklistHeaderComponent } from './ui/checklist-header.component';
 import { ChecklistItemListComponent } from './ui/checklist-item-list.component';
 
 @Component({
-  selector: 'app-checklist',
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ChecklistItemListComponent,
-    ChecklistHeaderComponent,
-    RouterLink,
-    ModalComponent,
-    FormModalComponent,
-  ],
-  template: `
+    selector: 'app-checklist',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        ChecklistItemListComponent,
+        ChecklistHeaderComponent,
+        ModalComponent,
+        FormModalComponent,
+    ],
+    template: `
     @if (checklist(); as checklist) {
       <app-checklist-header
         [checklist]="checklist"
@@ -64,7 +62,7 @@ import { ChecklistItemListComponent } from './ui/checklist-item-list.component';
         />
       </ng-template>
     </app-modal>
-  `,
+  `
 })
 export default class ChecklistComponent {
   checklistService = inject(ChecklistService);

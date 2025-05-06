@@ -7,10 +7,9 @@ import { ModalComponent } from '../shared/ui/modal.component';
 import { ChecklistListComponent } from './ui/checklist-list.component';
 
 @Component({
-  standalone: true,
-  selector: 'app-home',
-  imports: [ModalComponent, FormModalComponent, ChecklistListComponent],
-  template: `
+    selector: 'app-home',
+    imports: [ModalComponent, FormModalComponent, ChecklistListComponent],
+    template: `
     <header>
       <h1>Quicklists</h1>
       <button (click)="checklistBeingEdited.set({})">Add Checklist</button>
@@ -46,7 +45,7 @@ import { ChecklistListComponent } from './ui/checklist-list.component';
         (edit)="checklistBeingEdited.set($event)"
       />
     </section>
-  `,
+  `
 })
 export default class HomeComponent {
   formBuilder = inject(FormBuilder);
