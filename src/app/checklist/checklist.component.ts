@@ -18,15 +18,15 @@ import { ChecklistHeaderComponent } from './ui/checklist-header.component';
 import { ChecklistItemListComponent } from './ui/checklist-item-list.component';
 
 @Component({
-    selector: 'app-checklist',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        ChecklistItemListComponent,
-        ChecklistHeaderComponent,
-        ModalComponent,
-        FormModalComponent,
-    ],
-    template: `
+  selector: 'app-checklist',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    ChecklistItemListComponent,
+    ChecklistHeaderComponent,
+    ModalComponent,
+    FormModalComponent,
+  ],
+  template: `
     @if (checklist(); as checklist) {
       <app-checklist-header
         [checklist]="checklist"
@@ -51,18 +51,18 @@ import { ChecklistItemListComponent } from './ui/checklist-item-list.component';
             checklistItemBeingEdited()?.id
               ? checklistItemService.edit$.next({
                   id: checklistItemBeingEdited()!.id!,
-                  data: checklistItemForm.getRawValue()
+                  data: checklistItemForm.getRawValue(),
                 })
               : checklistItemService.add$.next({
                   item: checklistItemForm.getRawValue(),
-                  checklistId: checklist()?.id!
+                  checklistId: checklist()?.id!,
                 })
           "
           (close)="checklistItemBeingEdited.set(null)"
         />
       </ng-template>
     </app-modal>
-  `
+  `,
 })
 export default class ChecklistComponent {
   checklistService = inject(ChecklistService);

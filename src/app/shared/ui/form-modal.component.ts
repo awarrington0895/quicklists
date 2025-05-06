@@ -3,9 +3,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-    selector: 'app-form-modal',
-    imports: [ReactiveFormsModule, KeyValuePipe],
-    template: `
+  selector: 'app-form-modal',
+  imports: [ReactiveFormsModule, KeyValuePipe],
+  template: `
     <header>
       <h2>{{ title }}</h2>
       <button (click)="close.emit()">close</button>
@@ -27,7 +27,7 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
         <button type="submit">Save</button>
       </form>
     </section>
-  `
+  `,
 })
 export class FormModalComponent {
   @Input({ required: true }) formGroup!: FormGroup;
