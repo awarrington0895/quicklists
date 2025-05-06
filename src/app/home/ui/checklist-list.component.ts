@@ -3,7 +3,6 @@ import { RouterLink } from '@angular/router';
 import { Checklist, RemoveChecklist } from '../../shared/interfaces/checklist';
 
 @Component({
-  standalone: true,
   selector: 'app-checklist-list',
   styles: [
     `

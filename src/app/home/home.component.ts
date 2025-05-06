@@ -7,7 +7,6 @@ import { ModalComponent } from '../shared/ui/modal.component';
 import { ChecklistListComponent } from './ui/checklist-list.component';
 
 @Component({
-  standalone: true,
   selector: 'app-home',
   imports: [ModalComponent, FormModalComponent, ChecklistListComponent],
   template: `
@@ -30,7 +29,7 @@ import { ChecklistListComponent } from './ui/checklist-list.component';
             checklistBeingEdited()?.id
               ? checklistsService.edit$.next({
                   id: checklistBeingEdited()!.id!,
-                  data: checklistForm.getRawValue()
+                  data: checklistForm.getRawValue(),
                 })
               : checklistsService.add$.next(checklistForm.getRawValue())
           "

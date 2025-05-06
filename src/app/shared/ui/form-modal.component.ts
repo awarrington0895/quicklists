@@ -3,7 +3,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  standalone: true,
   selector: 'app-form-modal',
   imports: [ReactiveFormsModule, KeyValuePipe],
   template: `

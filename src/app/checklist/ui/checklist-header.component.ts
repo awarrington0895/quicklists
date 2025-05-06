@@ -10,7 +10,6 @@ import { Checklist, RemoveChecklist } from '../../shared/interfaces/checklist';
 
 @Component({
   selector: 'app-checklist-header',
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
     `

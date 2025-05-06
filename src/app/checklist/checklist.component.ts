@@ -19,12 +19,10 @@ import { ChecklistItemListComponent } from './ui/checklist-item-list.component';
 
 @Component({
   selector: 'app-checklist',
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ChecklistItemListComponent,
     ChecklistHeaderComponent,
-    RouterLink,
     ModalComponent,
     FormModalComponent,
   ],
@@ -53,11 +51,11 @@ import { ChecklistItemListComponent } from './ui/checklist-item-list.component';
             checklistItemBeingEdited()?.id
               ? checklistItemService.edit$.next({
                   id: checklistItemBeingEdited()!.id!,
-                  data: checklistItemForm.getRawValue()
+                  data: checklistItemForm.getRawValue(),
                 })
               : checklistItemService.add$.next({
                   item: checklistItemForm.getRawValue(),
-                  checklistId: checklist()?.id!
+                  checklistId: checklist()?.id!,
                 })
           "
           (close)="checklistItemBeingEdited.set(null)"
