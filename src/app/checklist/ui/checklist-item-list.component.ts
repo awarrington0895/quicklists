@@ -5,7 +5,6 @@ import {
 } from '../../shared/interfaces/checklist-item';
 
 @Component({
-  standalone: true,
   selector: 'app-checklist-item-list',
   styles: [
     `
